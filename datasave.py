@@ -27,10 +27,19 @@ def useradd (UserID,UserName):
     }
     for check in data["users"]:
         if check["UserID"]==UserID:
-            return (f"This User is exist UserID :{UserID}"),False
+            print(f"UserID {UserID} already exists!")  # ✅ debug
+            return None,(f"This User is exist UserID :{UserID}")
             
     data["users"].append(newuser)
 
     Data_save(datafile,data)
-    return  True,("User Added!")
-
+    return  ("Successfully Created Account!"),None
+def Login(User_ID,Name):
+        data =Data_Load(datafile)
+        for people in data["users"]:
+            if people['UserID'] ==User_ID:
+                if people["UserName"]==Name.lower():
+                    return ("Login Sucessfully"),None
+                else:
+                    return None,("Invalid Username")
+        return None,("Invalid UserID ")

@@ -1,7 +1,7 @@
 {
     "book": [
         {
-            "Title": "japan Ki kahani",
+            "Title": "Japan Ki kahani",
             "Author": "Hakeem Saeed",
             "Book_ID": 2345,
             "Total_Copies": 10,
@@ -34,62 +34,46 @@
             "Book_ID": 213,
             "Total_Copies": 321,
             "Available_Copies": 321
+        },
+        {
+            "Title": "japan ki kahani",
+            "Author": "talha",
+            "Book_ID": 3421,
+            "Total_Copies": 1,
+            "Available_Copies": 1
+        },
+        {
+            "Title": "japan ki kahani",
+            "Author": "talha",
+            "Book_ID": 34213,
+            "Total_Copies": 1,
+            "Available_Copies": 1
         }
     ],
     "users": [
         {
-            "UserID": 1234,
-            "UserName": "Ahsan Ahmed",
+            "UserID": "Ahsan",
+            "UserName": 34212,
             "borrowed": []
         },
         {
-            "UserID": 12,
-            "UserName": "Ahsan ahme",
+            "UserID": "ahsan",
+            "UserName": 122,
+            "borrowed": []
+        },
+        {
+            "UserID": 122111,
+            "UserName": "ahsan",
+            "borrowed": []
+        },
+        {
+            "UserID": 3,
+            "UserName": "ahsan",
             "borrowed": []
         },
         {
             "UserID": 1,
-            "UserName": "sddd",
-            "borrowed": []
-        },
-        {
-            "UserID": 122,
-            "UserName": "Ahsan ahmed",
-            "borrowed": []
-        },
-        {
-            "UserID": 23,
-            "UserName": "Ahsan",
-            "borrowed": []
-        },
-        {
-            "UserID": 1233,
-            "UserName": "Ahsan",
-            "borrowed": []
-        },
-        {
-            "UserID": 12333,
             "UserName": "ahsan",
-            "borrowed": []
-        },
-        {
-            "UserID": 1233332,
-            "UserName": "ahsan",
-            "borrowed": []
-        },
-        {
-            "UserID": 12333322,
-            "UserName": "ahsan",
-            "borrowed": []
-        },
-        {
-            "UserID": 9,
-            "UserName": "Ahsan",
-            "borrowed": []
-        },
-        {
-            "UserID": 1333,
-            "UserName": "Ahsn",
             "borrowed": []
         }
     ]

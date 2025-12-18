@@ -1,5 +1,6 @@
 import streamlit as st
 import Digital_Library as dl 
+ 
 
 if "ok" not in st.session_state:
     st.session_state.ok = False
@@ -7,22 +8,53 @@ if "current_user" not in st.session_state:
     st.session_state.current_user = None
 
 st.title ("Digital Library System ")
+tab1, tab2 = st.sidebar.tabs([" Create User", " Login"])
+with tab1:
+    new_name = st.text_input("New User Name")
+    new_id = st.number_input("New User ID", min_value=1, key="new_id")
 
-st.sidebar.header("User Management")
-with st.sidebar.expander("👤 Login / Create User"):
-    name = st.text_input("Enter User Name:")
-    user_id = st.number_input("Enter User ID:", min_value=1, step=1)
-    if st.button("Login / Create User"):
-        if not name.replace(" ", "").isalpha():
-            st.error("Please Only Alphabet use for User-Name ")
 
+    if st.button("Create User"):
+        if not new_name.replace(" ", "").isalpha():
+            st.error("Only alphabets allowed in name")
         else:
-                chk=st.session_state.current_user = dl.User(name, user_id)
-                if chk.error:
-                    st.error(chk.error)
-                else:
-                    st.success(chk.message)
-                    st.session_state.ok = True
+            user =User(new_name,new_id)  
+            if user.error:
+                    st.error(user.error)
+            else:
+                st.success(user.message)
+with tab2:
+    name = st.text_input("User Name")
+    user_id = st.number_input("User ID", min_value=1, key="login_id")
+    if not name.isalpha() or (not name):
+        st.warning("Please Invalid Username")
+    if st.button("Login"):
+        
+        user,err = dl.Login(user_id,name)  
+        if err:
+            st.error(err)
+        else:
+            st.session_state.current_user = user
+            st.session_state.ok = True
+            st.success("Login successful")
+
+# st.sidebar.header("User Management")
+# with st.sidebar.expander("👤 Login / Create User"):
+#     name = st.text_input("Enter User Name:")
+#     user_id = st.number_input("Enter User ID:", min_value=1, step=1)
+#     if st.button("Create User"):
+#         pass
+#     if st.button("Login / Create User"):
+#         if not name.replace(" ", "").isalpha():
+#             st.error("Please Only Alphabet use for User-Name ")
+
+#         else:
+#                 chk=st.session_state.current_user = dl.User(name, user_id)
+#                 if chk.error:
+#                     st.error(chk.error)
+#                 else:
+#                     st.success(chk.message)
+#                     st.session_state.ok = True
 # if st.session_state.ok:
 # ------------------- ACTION MENU -------------------
 if  st.session_state.ok or st.session_state.current_user is not None:
@@ -97,11 +129,8 @@ if  st.session_state.ok or st.session_state.current_user is not None:
     elif menu =="View All Book":
         st.header("View Book !")
         if st.button("Show Book"):
-            bal,err=Lib.show_books()
-            if err:
-                st.error(f"Error  :{err}")
-            else:
-                st.write(bal)
+            bal=Lib.show_books()
+            st.write(bal)
     else:
         st.warning("Please login or create a user first!")
             

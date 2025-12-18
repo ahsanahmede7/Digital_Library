@@ -1,4 +1,4 @@
-from datasave import datafile,fileuser,Data_Load,Data_save,useradd
+from datasave import datafile,fileuser,Data_Load,Data_save,useradd,Login
 
 
             
@@ -106,13 +106,16 @@ class Library:
     def show_books(self):
         data = Data_Load(datafile)
         ("\n List of Books:")
-        book_list=[]
-        if data["book"] ==[]:
-            return None,("No Book Available")
-        for book in data["book"]:
-            status = "Available" if book["Available_Copies"] else "Borrowed"
-            book_list.append(f"ID: {book['Book_ID']} | Title: {book['Title']} | Author: {book['Author']} | Status: {status}")
-        return "\n".join(books_list), None
+        return data["book"]
+        # book_list=[]
+        # if data["book"] ==[]:
+        #     return None,("No Book Available")
+        # for i,book in enumerate  (data["book"]):
+        #     status = "Available" if book["Available_Copies"] else "Borrowed"
+        #     book_list.append(f"{i}|ID: {book['Book_ID']} \n Title: {book['Title']} \n Author: {book['Author']} \n Status: {status}")
+        # # for books in book_list:
+
+        return "\n".join(book_list), None
 class User:
     def __init__(self,UserName,userID):
         self.UserName = UserName
@@ -121,17 +124,18 @@ class User:
         self.error=None
         self.message=None
         add,err=useradd(userID,UserName)
-        if not err:
-            self.error=add
+        if err:
+            self.error=err
             return 
         else:
-            self.message =err
+            self.message =add   
             data = Data_Load(datafile)
             self.borrowed_book = []
             for user in data["users"]:
                 if user["UserID"] == userID:
                     self.borrowed_book = [b.lower() for b in user.get("borrowed", [])]
                     return
+    
 
 
 

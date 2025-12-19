@@ -48,32 +48,24 @@
             "Book_ID": 34213,
             "Total_Copies": 1,
             "Available_Copies": 1
+        },
+        {
+            "Title": "ahsan",
+            "Author": "hunain",
+            "Book_ID": 1231,
+            "Total_Copies": 1,
+            "Available_Copies": 1
         }
     ],
     "users": [
         {
-            "UserID": "Ahsan",
-            "UserName": 34212,
-            "borrowed": []
-        },
-        {
-            "UserID": "ahsan",
-            "UserName": 122,
-            "borrowed": []
-        },
-        {
-            "UserID": 122111,
-            "UserName": "ahsan",
-            "borrowed": []
-        },
-        {
-            "UserID": 3,
-            "UserName": "ahsan",
-            "borrowed": []
-        },
-        {
             "UserID": 1,
             "UserName": "ahsan",
+            "borrowed": []
+        },
+        {
+            "UserID": 12,
+            "UserName": "ahsanw",
             "borrowed": []
         }
     ]

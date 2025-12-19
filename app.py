@@ -18,7 +18,7 @@ with tab1:
         if not new_name.replace(" ", "").isalpha():
             st.error("Only alphabets allowed in name")
         else:
-            user =User(new_name,new_id)  
+            user =dl.User(new_name,new_id)  
             if user.error:
                     st.error(user.error)
             else:
@@ -26,7 +26,7 @@ with tab1:
 with tab2:
     name = st.text_input("User Name")
     user_id = st.number_input("User ID", min_value=1, key="login_id")
-    if not name.isalpha() or (not name):
+    if not name.isalpha():
         st.warning("Please Invalid Username")
     if st.button("Login"):
         
@@ -34,7 +34,7 @@ with tab2:
         if err:
             st.error(err)
         else:
-            st.session_state.current_user = user
+            st.session_state.current_user = dl.User(name,user_id)
             st.session_state.ok = True
             st.success("Login successful")
 
@@ -63,7 +63,7 @@ if  st.session_state.ok or st.session_state.current_user is not None:
          st.session_state.library = dl.Library()
     Lib = st.session_state.library
     menu = st.sidebar.selectbox(
-        "Menu",["Add Book","Search By Title","Search By Author","Borrow Book","Return Book","View All Book","Exit"]
+        "Menu",["Add Book","Search By Title","Search By Author","Borrow Book","Return Book","View All Book","Log Out"]
     )
     
 
@@ -131,8 +131,18 @@ if  st.session_state.ok or st.session_state.current_user is not None:
         if st.button("Show Book"):
             bal=Lib.show_books()
             st.write(bal)
-    else:
-        st.warning("Please login or create a user first!")
+    
+    elif menu=="Log Out":
+        st.session_state.ok=None
+
+        if st.session_state.current_user is not None:
+            st.session_state.current_user = None
+            st.success("Successfully Log Out")
+            st.session_state.ok=True
+             
+if st.session_state.ok:
+    st.session_state.ok=False
+    st.rerun()
             
                 
         

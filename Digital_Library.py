@@ -29,7 +29,7 @@ class Library:
         data = Data_Load(datafile)
         for Chk in data["book"]:
             if Chk["Title"]==Title.lower():
-                return(f"This Book is Available ! Book Title :{Chk['Title']}"),None
+                return(f"This Book is Available ! \nBook Title :{Chk['Title']}"),None
                 
         return None,("Book Not Found!")
 
@@ -37,7 +37,7 @@ class Library:
         data =Data_Load(datafile)
         for Chk in data["book"]:
             if Chk["Author"]==Author.lower():
-               return("This Book is Availalbe!",Chk["Title"]),None
+               return (f"This Book is Availalbe!,\nAuthor Name :{Chk['Author']}"),None
                 
         return None,("Book Not Found!")
         
@@ -45,17 +45,20 @@ class Library:
         data = Data_Load(datafile)
         book_Found= False
         for Chk in data["book"]:
-            if Chk['Book_ID']==Book_ID and book_title.lower() == Chk["Title"]:
-                book_Found=True
-                if Chk["Available_Copies"] > 0:
-                    Chk["Available_Copies"]-=1
-                    # Data_save(datafile,data)
-                    user.borrowed_book.append(book_title.lower())
+            if Chk['Book_ID']==Book_ID :
+                if book_title.lower() == Chk["Title"]:
+                    book_Found=True
+                    if Chk["Available_Copies"] > 0:
+                        Chk["Available_Copies"]-=1
+                        # Data_save(datafile,data)
+                        user.borrowed_book.append(book_title.lower())
+                    else:
+                        return None,("No Book Are available!")
                 else:
-                    return None,("No Book Are available!")
+                    return None,("Incorrect Book Title")
                     
         if not book_Found:
-            return None,("Incorrect Book_ID And Title!")
+            return None,("Incorrect Book_ID !")
             
         user_found=False
 
@@ -77,7 +80,7 @@ class Library:
         borrowed=[]
         for check in data["users"]:
             if check["UserID"] == User_ID:
-                check["borrowed"]=user.borrowed_book
+                user.borrowed_book=check["borrowed"]
                 borrowed = [b.lower() for b in check.get("borrowed", [])]
                 user_found=True
                 break
@@ -85,7 +88,8 @@ class Library:
             return None,("Incorrect UserID")
            
 
-        if book_titles.lower() not in user.borrowed_book:
+        if book_titles not in user.borrowed_book:
+            print(user.borrowed_book)
             return None,("This Book was not borrowed!")
         user.borrowed_book.remove(book_titles.lower())
         book_Found=False
@@ -101,7 +105,7 @@ class Library:
                 
         
         Data_save(datafile,data)
-        return(f"Thanks You!\n For return Library BOOK {self.UserName}"),None
+        return(f"Thanks You!\n For return Library BooK \n Mr:{user.UserName}"),None
     
     def show_books(self):
         data = Data_Load(datafile)

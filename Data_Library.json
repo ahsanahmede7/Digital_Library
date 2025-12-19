@@ -1,72 +1,7 @@
 {
     "book": [
-        {
-            "Title": "Japan Ki kahani",
-            "Author": "Hakeem Saeed",
-            "Book_ID": 2345,
-            "Total_Copies": 10,
-            "Available_Copies": 10
-        },
-        {
-            "Title": "Ahsan",
-            "Author": "Hunain",
-            "Book_ID": 1,
-            "Total_Copies": 1,
-            "Available_Copies": 1
-        },
-        {
-            "Title": "Ahsan",
-            "Author": "Hunains",
-            "Book_ID": 12,
-            "Total_Copies": 1,
-            "Available_Copies": 1
-        },
-        {
-            "Title": "sd",
-            "Author": "ds",
-            "Book_ID": 123,
-            "Total_Copies": 1,
-            "Available_Copies": 1
-        },
-        {
-            "Title": "ahsan",
-            "Author": "ahmed",
-            "Book_ID": 213,
-            "Total_Copies": 321,
-            "Available_Copies": 321
-        },
-        {
-            "Title": "japan ki kahani",
-            "Author": "talha",
-            "Book_ID": 3421,
-            "Total_Copies": 1,
-            "Available_Copies": 1
-        },
-        {
-            "Title": "japan ki kahani",
-            "Author": "talha",
-            "Book_ID": 34213,
-            "Total_Copies": 1,
-            "Available_Copies": 1
-        },
-        {
-            "Title": "ahsan",
-            "Author": "hunain",
-            "Book_ID": 1231,
-            "Total_Copies": 1,
-            "Available_Copies": 1
-        }
+       
     ],
     "users": [
-        {
-            "UserID": 1,
-            "UserName": "ahsan",
-            "borrowed": []
-        },
-        {
-            "UserID": 12,
-            "UserName": "ahsanw",
-            "borrowed": []
-        }
     ]
 }
